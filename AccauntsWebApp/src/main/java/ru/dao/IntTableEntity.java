@@ -2,9 +2,7 @@ package ru.dao;
 
 import javax.persistence.*;
 
-/**
- * Created by vaka on 23.07.16.
- */
+
 @Entity
 @Table(name = "IntTable", schema = "Accaunts")
 @IdClass(IntTableEntityPK.class)

@@ -3,9 +3,7 @@ package ru.dao;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by vaka on 23.07.16.
- */
+
 @Entity
 @Table(name = "DateTable", schema = "Accaunts")
 @IdClass(DateTableEntityPK.class)
