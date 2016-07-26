@@ -1,0 +1,37 @@
+<h2>Редактор списков</h2>
+
+<div ng-show="isDoRequest">...Loading...</div>
+
+<div ng-hide="isDoRequest">
+    Доступные списки:&nbsp;&nbsp;
+    <select name="selectListName"
+            id="selectListName"
+            ng-model="list.selected"
+            ng-options="option.text for option in list.variants">
+    </select>
+    <button ng-click="getSelectedList()" ng-disabled="!isSelectList()">Get</button>
+    <br>
+    <br>
+    <form name="listContainerForm" ng-show="!positions.isEmpty">
+        <table>
+            <tr>
+                <th>Варианты ответов</th>
+            </tr>
+            <tr ng-repeat="var in positions.texts">
+                <td>
+                    <input type="text" readonly ng-model="var">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" ng-model="positions.newPosition" placeholder="New answer...">
+                </td>
+                <td>
+                    <button ng-click="addNewPosition()" ng-disabled="isInvalidNewPosition()">Add</button>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" ng-click="updateListContent()" value="Обновить">
+        <span ng-model="msg" ng-hide="isMsgEmpty()">{{ msg }}</span>
+    </form>
+</div>

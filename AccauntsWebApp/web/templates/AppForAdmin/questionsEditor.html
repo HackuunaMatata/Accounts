@@ -1,0 +1,85 @@
+<h2>Редактор вопросов</h2>
+
+<span ng-show="isDoRequest">...Loading...</span>
+
+<div ng-hide="isDoRequest">
+<form name="questionsTableForm">
+    <table>
+        <tr>
+            <th>Вопрос</th>
+            <th>Видимость</th>
+            <th>Формат</th>
+            <th>Тип данных</th>
+        </tr>
+
+        <tr ng-repeat="question in questions"
+            ng-model="question">
+            <td>
+                <input type="text"
+                       name="questionName"
+                       id="questionName"
+                       ng-model="question.text"
+                       required
+                       ng-readonly="isReadOnly(question.change)">
+            </td>
+            <td>
+                <input type="checkbox"
+                       ng-model="question.visible"
+                       ng-true-value="1"
+                       ng-false-value="0"
+                       ng-hide="isReadOnly(question.change)">
+            <span ng-show="isReadOnly(question.change)">
+                Must be
+            </span>
+            </td>
+            <td>
+                <select name="selectFormatQuestion"
+                        id="selectFormatQuestion"
+                        ng-model="question.format"
+                        ng-hide="isReadOnly(question.change)">
+                    <option ng-repeat="var in index2formatName">{{var}}</option>
+                </select>
+                <span ng-show="isReadOnly(question.change)">{{ question.format }}</span>
+            </td>
+            <td>
+                <div>{{ question.type }}</div>
+            </td>
+        </tr>
+        <!-- Add new question -->
+        <tr>
+            <td>
+                <input type="text"
+                       ng-model="newQuestion.text"
+                       id="newQuestionName"
+                       name="newQuestionName"
+                       placeholder="New question text">
+            </td>
+            <td>
+                <input type="checkbox"
+                       ng-model="newQuestion.visible"
+                       ng-true-value="1"
+                       ng-false-value="0">
+            </td>
+            <td>
+                <select name="selectFormatNewQuestion"
+                        id="selectFormatNewQuestion"
+                        ng-model="newQuestion.format">
+                    <option ng-repeat="var in index2formatName">{{var}}</option>
+                </select>
+            </td>
+            <td>
+                <select name="selectTypeNewQuestion"
+                        id="selectTypeNewQuestion"
+                        ng-model="newQuestion.type">
+                    <option ng-repeat="var in typeNames">{{var}}</option>
+                </select>
+            </td>
+            <td>
+                <button ng-click="addNewQuestion()" ng-disabled="isInvalidNewQuestion()">Add</button>
+            </td>
+        </tr>
+        <!--End add new question -->
+    </table>
+    <input type="submit" ng-click="updateQuestions(questionsTableForm)" ng-disabled="!questionsTableForm.$valid" value="Обновить">
+</form>
+</div>

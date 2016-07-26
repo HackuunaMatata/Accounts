@@ -1,0 +1,55 @@
+<h2>Получение данных о пользователе</h2>
+
+<span ng-show="isDoRequest">...Loading...</span>
+
+<!-- XLS send -->
+<div ng-hide="isDoRequest">
+    Выберите пользователей: <br>
+    <select name="selectUsers"
+            id="selectUsers"
+            ng-model="selectUsers"
+            multiple
+            size="10">
+        <option ng-repeat="option in users" ng-value="option.id">{{ option.text }}</option>
+    </select><br>
+    <button ng-click="getXLS()" ng-disabled="getXLS.isDoRequest()">Get xls</button>
+    <span ng-show="getXLS.isDoRequest()">...Loading...</span>
+</div>
+
+<!-- Email send -->
+<div ng-hide="isDoRequest">
+    <hr>
+    <h2>Настройка передачи статистики по Email</h2>
+    <form name="emailConfigurationForm">
+        <label for="destinationEmail">Адрес получателя:</label>
+        <input  name="destinationEmail"
+                id="destinationEmail"
+                type="text"
+                required
+                ng-model="email.address"
+                ng-pattern="getPattern('email')">
+        <span class="error_msg"
+              ng-show="isAddressNotExist()">{{ getErrorMessage('email') }}
+        </span>
+        <br>
+        <label for="selectDelayForSend">Частота передачи: раз в </label>
+        <select name="selectDelayForSend"
+                id="selectDelayForSend"
+                ng-model="email.delayMinForSend"
+                ng-options="opt.value as opt.name group by opt.forGroup for opt in email.masDelaysForSend | orderBy: 'value'"></select>
+        <br>
+        <label for="selectDelayForControl">Период изменений: за последние </label>
+        <select name="selectDelayForControl"
+                id="selectDelayForControl"
+                ng-model="email.delayMinForControl"
+                ng-options="opt.value as opt.name group by opt.forGroup for opt in email.masDelaysForControl | orderBy: 'value'"></select>
+        <br>
+        <label for="checkboxEnableTransmit">Запустить отправку </label>
+        <input type="checkbox"
+               id="checkboxEnableTransmit"
+               name="checkboxEnableTransmit"
+               ng-model="email.enableTransmit">
+        <br>
+        <input type="submit" ng-click="updateMailManager()" ng-disabled="!emailConfigurationForm.$valid" value="Изменить">
+    </form>
+</div>

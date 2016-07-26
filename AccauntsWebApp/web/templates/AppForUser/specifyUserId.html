@@ -1,0 +1,16 @@
+<h2>Уточнение пользователя</h2>
+
+<div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+        </tr>
+        <tr ng-repeat="id in userInfo.ids">
+            <td><button ng-click="sendChoise(id)" ng-model="userInfo">{{id}}</button></td>
+            <td>{{userInfo.name}}</td>
+            <td>{{userInfo.surname}}</td>
+        </tr>
+    </table>
+</div>

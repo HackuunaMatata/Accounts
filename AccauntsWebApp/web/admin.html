@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AppForAdmin">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body ng-controller="HomeAdminController">
+<header>
+    <a href="#/">Home admin</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#/questionsEditor">[Редактор вопросов]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#/listEditor">[Редактор списков]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#/getInfo">[Получить информацию]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</header>
+<hr>
+
+<ng-view></ng-view>
+
+<hr>
+<footer>
+    <b>
+        <a href="index.html#/">Home Page</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="user.html#/">User</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="admin.html#/">Admin</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </b>
+</footer>
+
+<script src="resources/libs/angular-1.5.7/angular.min.js"></script>
+<script src="resources/libs/angular-1.5.7/angular-route.min.js"></script>
+<script src="resources/js/adminAppControllers.js"></script>
+<script src="resources/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<h2>Выбор пользователя</h2>
+
+<div>
+    <form class="input-form" name="loginForm">
+        <p>
+            <label for="inputUserSurname">Фамилия</label>
+            <input type="text"
+                   id="inputUserSurname"
+                   name="inputUserSurname"
+                   required
+                   placeholder="User surname"
+                   ng-pattern="setPattern()"
+                   ng-model="userdata.surname"/>
+            <span class="error_msg" ng-hide="loginForm.inputUserSurname.$valid">
+                Ошибка: разрешены только символы кириллицы и латиницы
+            </span>
+        </p>
+        <p>
+            <label for="inputUserName">Имя</label>
+            <input type="text"
+                   id="inputUserName"
+                   name="inputUserName"
+                   required
+                   placeholder="User name"
+                   ng-pattern="setPattern()"
+                   ng-model="userdata.name"/>
+            <span class="error_msg" ng-hide="loginForm.inputUserName.$valid">
+                Ошибка: разрешены только символы кириллицы и латиницы
+            </span>
+        </p>
+        <p>
+            <label for="checkboxNewUser">Точно новый пользователь </label>
+            <input type="checkbox"
+                   name="checkboxNewUser"
+                   id="checkboxNewUser"
+                   ng-model="userdata.isNewUser">
+        </p>
+        <p>
+            <input type="submit" value="Войти" ng-click="sendData(loginForm)" ng-disabled="!loginForm.$valid"/>
+            <span ng-show="isSubmit">...Loading...</span>
+        </p>
+    </form>
+</div>
+

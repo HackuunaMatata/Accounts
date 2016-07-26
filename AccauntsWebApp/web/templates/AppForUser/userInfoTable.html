@@ -1,0 +1,34 @@
+<h2>Информация о пользователе <b>[{{userId}}]</b> {{userName}} {{userSurname}}</h2>
+
+<form name="userDataForm">
+    <table>
+        <tr>
+            <th>Поле</th>
+            <th>Значение</th>
+        </tr>
+        <tr ng-repeat="field in dataTable" ng-model="dataTable[$index]">
+            <td>{{field.text}}</td>
+            <td><input type="text"
+                       name="inputField"
+                       id="inputField"
+                       ng-model="dataTable[$index].value"
+                       ng-hide="isList($index)"
+                       ng-pattern="getPattern(field.format)">
+                <select name="selectCell"
+                        id="selectCell"
+                        ng-model="field.value"
+                        ng-show="isList($index)">
+                    <option ng-repeat="var in field.format">{{var}}</option>
+                </select>
+            </td>
+            <td>
+                <span class="error_msg"
+                      ng-show="isContainError($index)">
+                    {{ getErrorMessage(field.format) }}
+                </span>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" ng-click="updateData(userDataForm)" ng-disabled="!userDataForm.$valid" value="Обновить">
+    <span ng-show="isSubmit">...Loading...</span>
+</form>

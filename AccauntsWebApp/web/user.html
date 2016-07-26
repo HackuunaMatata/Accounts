@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AppForUser">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body ng-controller="AppForUserController">
+    <header>
+        <a href="index.html#/">Home Page</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="user.html#/">User</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="admin.html#/">Admin</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br>
+    </header>
+    <hr>
+
+    <ng-view></ng-view>
+
+    <hr>
+    <footer>
+        <h3>Better footer</h3>
+    </footer>
+
+    <script src="resources/libs/angular-1.5.7/angular.min.js"></script>
+    <script src="resources/libs/angular-1.5.7/angular-route.min.js"></script>
+    <script src="resources/js/userAppControllers.js"></script>
+    <script src="resources/js/app.js"></script>
+</body>
+</html>
