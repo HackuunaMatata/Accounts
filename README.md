@@ -73,4 +73,4 @@
 
 # Остальное
 
-Остальное описание проекта в файле `ReadMe.txt`
+Остальное описание проекта в файле `[ReadMe.txt](https://github.com/kadze009/Accounts/blob/master/ReadMe.txt)`
