@@ -2,7 +2,7 @@
    Это web-приложение, которое позволяет хранить список пользователей в базе данных, а также хранить дополнительную информацию о пользователях (имя, фамилия, email, телефон, дата рождения и тд). Диалог с пользователем осуществляется через ответы пользователя на вопросы (как анкета). Ответы на вопросы могут быть как текст, так и как выпадающий список. Корректность пользовательского ввода проверяется. Имеются механизмы для администрирования приложения.
    Приложение узко специализированно. Не реализовано шифрование данных. Не реализованы (и не подразумевается) аутентификация и авторизация.
    В проекте использовались
-* framework'и: `AngularJS`, `Hibernate`
+* frameworkes : `AngularJS`, `Hibernate`
 * IDE : `IntelliJ IDEA Ultimate 2016.1`
 * контейнер : `Apache Tomcat 9 (TomEE)`
 * СУБД : `MySQL 5.5`
@@ -35,7 +35,7 @@
 # Сборка проекта из исходного кода
 
  1. Создаём пустой проект Maven без использования архетипов.
- 2. В файл `pom.xml` прописываем зависимости. (см. файл `pom.xml`)
+ 2. В файл `pom.xml` прописываем зависимости. (см. файл [pom.xml](https://github.com/kadze009/Accounts/blob/master/AccauntsWebApp/pom.xml))
  3. Создаём базу данных `Accaunts` в СУБД `MySQL 5.5`. Для этого используем файл `CreateTables.sql`.
  4. Подключаемся к созданной базе. Справа вкладка `Database`. Жмём "+". Выбираем MySQL. Вводим
     параметры и проверяем соединение.
@@ -50,8 +50,8 @@
     `suffix` - `Entity`. Выбраны `prefer primitive types`, `Show default relationship`,
     `Add Session Factory`, `Generate Column Properties`,`Generate JPA Annotations(Java5)`. Выбираем
     все таблицы и жмём `OK`.
- 8. Редактируем файл `hibernate.cfg.xml`. Добавляем _диалект `MySQL`_, _имя пользователя_ и _пароль пользователя_, под которым будет работать `hibernate`. (см. `hibernate.cfg.xml`)
- 9. Правим сгенерированные классы. (см. в конце пункта)
+ 8. Редактируем файл `hibernate.cfg.xml`. Добавляем _диалект `MySQL`_, _имя пользователя_ и _пароль пользователя_, под которым будет работать `hibernate`. (см. [hibernate.cfg.xml](https://github.com/kadze009/Accounts/blob/master/AccauntsWebApp/src/main/resources/hibernate.cfg.xml))
+ 9. Правим сгенерированные классы.
     - В классы с `PK` в `@Column` добавляем `insertable = false, updatable = false`;
     - В классы `Date-`, `Int-`, `Lists-`, `StrTableEntity` в связи в графе `@JoinColumn` добавляем `nullable = false, insertable = false, updatable = false`.
     - В классах `UsersEntity` и `QuestionsEntity` пытаемся получить
@@ -60,8 +60,8 @@
 
       Таким образом настраивается `AUTO_INCREMENT` для полей, на которых он задан в БД.
  10. Добавим скаченные Maven'ом зависимости. Настройка проекта (`Ctrl+Alt+Shift+S`), `Artifacts`. Добавляем все доступные.
- 11. Распределяем классы по пакетам. (см. иерархию)
- 12. Проверяем наличие в `web.xml` тэга `welcome-list`.
+ 11. Распределяем классы по пакетам. (см. [иерархию](https://github.com/kadze009/Accounts/blob/master/ReadMe.txt))
+ 12. Проверяем наличие в `web.xml` тэга `welcome-list` (см. [web.xml](https://github.com/kadze009/Accounts/blob/master/AccauntsWebApp/web/WEB-INF/web.xml)).
  13. Настройка запуска. `Run-->Edit configurations...` Слева сверху жмём "+". Выбираем
      `Tomcat Server-->Local`. Помимо настроек добавляем во вкладке `Deployment`, нажав на "+" справа,
      артефакты.
@@ -73,4 +73,10 @@
 
 # Остальное
 
-Остальное описание проекта в файле [ReadMe.txt](https://github.com/kadze009/Accounts/blob/master/ReadMe.txt)
+Остальное описание проекта в файле [ReadMe.txt](https://github.com/kadze009/Accounts/blob/master/ReadMe.txt). В этом файле представлены:
+* логика работы приложения
+* последовательность отправки и структура json
+* список некорректностей и недоработок
+* список особенностей, на которые стоит обратить внимание
+* сборка проекта из исходного кода
+* иерархия файлов
