@@ -56,7 +56,7 @@
     - В классы `Date-`, `Int-`, `Lists-`, `StrTableEntity` в связи в графе `@JoinColumn` добавляем `nullable = false, insertable = false, updatable = false`.
     - В классах `UsersEntity` и `QuestionsEntity` пытаемся получить
 
-      ![Hibernate AUTO_INCREMENT](https://pp.vk.me/c630720/v630720647/43623/dZgY_U1E2p8.jpg)
+      ![Hibernate AUTO_INCREMENT](https://github.com/kadze009/Accounts/blob/master/img/Hibernate_auto_increment.jpg)
 
       Таким образом настраивается `AUTO_INCREMENT` для полей, на которых он задан в БД.
  10. Добавим скаченные Maven'ом зависимости. Настройка проекта (`Ctrl+Alt+Shift+S`), `Artifacts`. Добавляем все доступные.
@@ -69,7 +69,7 @@
 
 # Иерархия файлов
 
-![File tree](https://pp.vk.me/c630720/v630720647/43633/YuuLK2rchjo.jpg)
+![File tree](https://github.com/kadze009/Accounts/blob/master/img/file_tree.jpg)
 
 # Остальное
 
